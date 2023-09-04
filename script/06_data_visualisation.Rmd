@@ -1,6 +1,8 @@
 ---
 title: "Data Visualisation"
-author: "Andrew Stewart, Email: drandrewjstewart@gmail.com, Twitter: @ajstewart_lang"
+author:
+    - Dr Danna Gifford, Unit coordinator (2023), danna.gifford@manchester.ac.uk
+    - Prof Andrew Stewart, Original author (2020-2022), drandrewjstewart@gmail.com
 date: ""
 output: 
  html_document:
@@ -17,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Being able to build clear visualisations is key to the successful communication of your data to your intended audience.
 
-There are a couple of great recent books focused on data visualisation that I suggest you have a look it. They both provide great perspectives on data visualisations and are full of wonderful examples of different kinds of data visualisations, some of which you'll learn how to build in this workshop.
+There are a couple of great recent books focused on data visualisation that are good resources. They both provide great perspectives on data visualisations and are full of wonderful examples of different kinds of data visualisations, some of which you'll learn how to build in this workshop.
 
 If you click on the image of the Claus Wilke book, you'll be taken to the online version of the book (written in R, obviously!)
 
@@ -31,7 +33,7 @@ If you click on the image of the Claus Wilke book, you'll be taken to the online
 
 &nbsp;&nbsp;
 
-First I'd like you to watch this brief video where I give some examples of the kinds of data visualisations you can build in R, and why you probably want to avoid building bar graphs.
+First please watch this brief video which gives some examples of the kinds of data visualisations you can build in R, and why you probably want to avoid building bar graphs.
 
 <center>
 
@@ -65,7 +67,7 @@ First we need to load the ggplot2 package. As it is part of the Tidyverse (and w
 library(tidyverse)
 ```
 
-In the video, I mention that using ggplot2 requires us to specify some core information in order to build our visualisations. These include the raw data that you want to plot, geometries (or geoms) that are the geometric shapes that will represent the data, and the aesthetics of the geometric and objects, such as color, size, shape and position.
+This video mentions that using ggplot2 requires us to specify some core information in order to build our visualisations. These include the raw data that you want to plot, geometries (or geoms) that are the geometric shapes that will represent the data, and the aesthetics of the geometric and objects, such as color, size, shape and position.
 
 # Your First Visualisation
 
@@ -146,7 +148,7 @@ mpg %>%
   coord_flip()
 ```
 
-This is looks pretty good. Can you tell what the other bits of code do that I added? Have a go changing some of the numbers to see what happens. You can prevent a line of code being run by adding a `#` in front of it. So if you need to temporarily not run a line, just add a `#` rather than delete the line.
+This is looks pretty good. Can you tell what the other bits of code do that were added? Have a go changing some of the numbers to see what happens. You can prevent a line of code being run by adding a `#` in front of it. So if you need to temporarily not run a line, just add a `#` rather than delete the line.
 
 Plots are rarely completely "finished" as you'll often think of a minor aesthetic tweak that might make some improvement.
 
@@ -282,7 +284,7 @@ OK, so our tidied dataset is assigned to the variable NHANES_tidied and has 6,77
 
 ## Plotting a Histogram
 
-Let's start exploring the data. We have lots of potential variables and relationships to explore. I see we have one labelled `Education` which is coded as a factor. We also have information related to health such as BMI - first of all lets plot a histogram of BMI.
+Let's start exploring the data. We have lots of potential variables and relationships to explore. We have one labelled `Education` which is coded as a factor. We also have information related to health such as BMI - first of all lets plot a histogram of BMI.
 
 ```{r, warning=FALSE}
 NHANES_tidied %>%
@@ -310,7 +312,7 @@ Let's graph it! Note here we're filtering out cases where we don't have BMI valu
 
 The line of code below starting with `filter()` means filter cases where Education is not missing AND BMI is not missing. This means that the `NHANES_tidied` data that gets passed to the `ggplot()` call has no missing data for the key variables we're interested in. 
 
-I then add a `geom_violin()` layer to capture the shape of the distribution for each level of Education and `geom_boxplot()` layer to create a boxplot for each level of our Education factor.
+We then add a `geom_violin()` layer to capture the shape of the distribution for each level of Education and `geom_boxplot()` layer to create a boxplot for each level of our Education factor.
 
 The `guides(colour = 'none')` call suppresses displaying the colour legend - place a `#` in front of it and rerun the code to see what changes.
 
@@ -329,7 +331,7 @@ NHANES_tidied %>%
 
 ## Plotting Interaction Effects
 
-We can also plot how two factors interact with each other. For the plot above, we'll now add the factor `Diabetes` (which has two levels - Yes vs. No) to see how that might interact with Education level. To capture the nature of this interaction, we use the expression `Education:Diabetes` when we specify the x-axis aesthetic. Note, I have rotated the x-axis labels 45 degrees to make them easier to read.
+We can also plot how two factors interact with each other. For the plot above, we'll now add the factor `Diabetes` (which has two levels - Yes vs. No) to see how that might interact with Education level. To capture the nature of this interaction, we use the expression `Education:Diabetes` when we specify the x-axis aesthetic. Note, the x-axis labels are rotated 45 degrees to make them easier to read.
 
 ```{r, warning=FALSE, message=FALSE}
 NHANES_tidied %>% 
